@@ -1,1 +1,133 @@
-<p>create works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ứng dụng quản lý khu nghỉ dưỡng Fusama</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<div  class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Add service new</h2>
+        </div>
+      </div>
+      <div class="container mt-4">
+        <div class="row w-50 mx-auto" style="background-color: white">
+          <div class="col-lg-12">
+            <form action="/facility/create" method="post">
+
+              <div class="mb-2">
+                <label class="form-label">Kiểu dịch vụ</label>
+                <select class="form-select" onchange="facilityTypeChanged(this.value)">
+                  <option value="">Chọn kiểu dịch vụ</option>
+                  <option value="1">Villa</option>
+                  <option value="2">House</option>
+                  <option value="3">Room</option>
+                </select>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Tên dịch vụ</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Diện tích sử dụng</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Chi phí thuê</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Số lượng người tối đa</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Kiểu thuê</label>
+                <select class="form-select">
+                  <option value="">Chọn kiểu thuê</option>
+                  <option>year</option>
+                  <option>month</option>
+                  <option>day</option>
+                  <option>hour</option>
+                </select>
+              </div>
+
+              <div class="mb-2" id="standardRoom" hidden>
+                <label class="form-label">Tiêu chuẩn phòng</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2" id="descriptionOtherConvenience" hidden>
+                <label class="form-label">Mô tả tiện nghi khác</label>
+                <textarea type="text" class="form-control"></textarea>
+              </div>
+
+              <div class="mb-2" id="poolArea" hidden>
+                <label class="form-label">Diện tích hồ bơi</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2" id="numberOfFloors" hidden>
+                <label class="form-label">Số tầng</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div class="mb-2" id="facilityFree" hidden>
+                <label class="form-label">Dịch vụ miễn phí đi kèm</label>
+                <input type="text" class="form-control"/>
+              </div>
+
+              <div style="text-align: center">
+                <a routerLink="/facility/list"><input class="btn btn-success mx-2" type="button" value="Back"></a>
+                <button type="submit" class="btn btn-success">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function facilityTypeChanged(value) {
+    if (value == 1) {
+      document.getElementById("standardRoom").hidden = false;
+      document.getElementById("descriptionOtherConvenience").hidden = false;
+      document.getElementById("poolArea").hidden = false;
+      document.getElementById("numberOfFloors").hidden = false;
+      document.getElementById("facilityFree").hidden = true;
+    } else if (value == 2) {
+      document.getElementById("standardRoom").hidden = false;
+      document.getElementById("descriptionOtherConvenience").hidden = false;
+      document.getElementById("poolArea").hidden = true;
+      document.getElementById("numberOfFloors").hidden = false;
+      document.getElementById("facilityFree").hidden = true;
+    } else if (value == 3) {
+      document.getElementById("standardRoom").hidden = true;
+      document.getElementById("descriptionOtherConvenience").hidden = true;
+      document.getElementById("poolArea").hidden = true;
+      document.getElementById("numberOfFloors").hidden = true;
+      document.getElementById("facilityFree").hidden = false;
+    }
+  }
+</script>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

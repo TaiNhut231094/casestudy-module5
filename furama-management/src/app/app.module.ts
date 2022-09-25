@@ -8,6 +8,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
 import {CustomerModule} from './customer/customer.module';
 import {FacilityModule} from './facility/facility.module';
+import {ContractModule} from './contract/contract.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FacilityModule} from './facility/facility.module';
     BrowserModule,
     AppRoutingModule,
     CustomerModule,
-    FacilityModule
+    FacilityModule,
+    ContractModule
   ],
   providers: [],
   bootstrap: [AppComponent]
