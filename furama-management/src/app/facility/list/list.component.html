@@ -42,108 +42,21 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4" *ngFor="let item of facilities">
         <div class="blog_box">
           <div class="blog_img">
-            <figure><img src="assets/images/Vietnam_Danang_Furama_Garden-Deluxe-twin-bed-F-370x239.jpg" alt="#"/>
+            <figure><img style="width: 100%; height: 250px" [src]="item.image" alt="#"/>
             </figure>
           </div>
           <div class="blog_room">
-            <h3>Beach Front</h3>
-            <span>Size: 500 </span>
+            <h3 class="mb-4">{{item.name}}</h3>
+            <span>Area: {{item.area}} m<sup>2</sup></span>
+            <span>Cost: {{item.cost | currency}}</span>
           </div>
           <div style="text-align: center">
             <a><input routerLink="/facility/edit" class="btn btn-success mx-4" type="button" value="Edit"></a>
             <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
-          </div>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog_box">
-          <div class="blog_img">
-            <figure><img src="assets/images/phong-ngu-biet-thu-4-pn-furama-da-nang.jpg" alt="#"/></figure>
-          </div>
-          <div class="blog_room">
-            <h3>House Princess 01</h3>
-            <span>Size: 500 </span>
-          </div>
-          <div style="text-align: center">
-            <a><input routerLink="/facility/edit" class="btn btn-success mx-4" type="button" value="Edit"></a>
-            <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
-          </div>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog_box">
-          <div class="blog_img">
-            <figure><img src="assets/images/Vietnam_Danang_Furama_Garden-Deluxe-twin-bed-F-370x239.jpg"
-                         alt="#"/></figure>
-          </div>
-          <div class="blog_room">
-            <h3>Room Twin 01</h3>
-            <span>Size: 500 </span>
-          </div>
-          <div style="text-align: center">
-            <a><input routerLink="/facility/edit" class="btn btn-success mx-4" type="button" value="Edit"></a>
-            <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
-          </div>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog_box">
-          <div class="blog_img">
-            <figure><img src="assets/images/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-                         alt="#"/></figure>
-          </div>
-          <div class="blog_room">
-            <h3>Villa No Beach Front</h3>
-            <span>Size: 500 </span>
-          </div>
-          <div style="text-align: center">
-            <a><input routerLink="/facility/edit" class="btn btn-success mx-4" type="button" value="Edit"></a>
-            <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
-          </div>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog_box">
-          <div class="blog_img">
-            <figure><img src="assets/images/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg" alt="#"/>
-            </figure>
-          </div>
-          <div class="blog_room">
-            <h3>House Princess 02</h3>
-            <span>Size: 500 </span>
-          </div>
-          <div style="text-align: center">
-            <a><input routerLink="/facility/edit" class="btn btn-success mx-4" type="button" value="Edit"></a>
-            <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
-          </div>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog_box">
-          <div class="blog_img">
-            <figure><img src="assets/images/phong-ngu-biet-thu-4-pn-furama-da-nang.jpg" alt="#"/></figure>
-          </div>
-          <div class="blog_room">
-            <h3>Room Twin 02</h3>
-            <span>Size: 500 </span>
-          </div>
-          <div style="text-align: center">
-            <a><input class="btn btn-success mx-4" type="button" value="Edit"></a>
-            <a href="#deleteFacilityModal" class="delete" data-toggle="modal">
-              <input class="btn btn-success" type="button" value="Delete"></a>
+              <input class="btn btn-secondary" type="button" value="Delete"></a>
           </div>
           <br>
         </div>

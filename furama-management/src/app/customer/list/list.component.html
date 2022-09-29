@@ -64,16 +64,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <th>1</th>
-                      <td>Nguyễn Thị Hào</td>
-                      <td>1995-12-21</td>
-                      <td>Nữ</td>
-                      <td>123456789</td>
-                      <td>0918778123</td>
-                      <td>haonguyen@gmail.com</td>
-                      <td>Đà Nẵng</td>
-                      <td>VIP</td>
+                    <tr *ngFor="let item of customers">
+                      <th>{{item.id}}</th>
+                      <td>{{item.name}}</td>
+                      <td>{{item.dateOfBirthday}}</td>
+                      <td>{{item.gender == false ? 'Nam' : 'Nữ'}}</td>
+                      <td>{{item.idCard}}</td>
+                      <td>{{item.phoneNumber}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.address}}</td>
+                      <td>{{item.customerType.name}}</td>
                       <td>
                         <a routerLink="/customer/edit" class="edit"><i
                           class="material-icons"
@@ -86,51 +86,6 @@
                              title="Delete">&#xE872;</i></a>
                       </td>
                     </tr>
-                    <tr>
-                      <th>2</th>
-                      <td>Nguyễn Văn Chiến</td>
-                      <td>1995-12-21</td>
-                      <td>Nam</td>
-                      <td>123456789</td>
-                      <td>0918778123</td>
-                      <td>chiennguyen@gmail.com</td>
-                      <td>Đà Nẵng</td>
-                      <td>VIP</td>
-                      <td>
-                        <a routerLink="/customer/edit" class="edit"><i
-                          class="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit">&#xE254;</i></a>
-                      </td>
-                      <td>
-                        <a href="#deleteCustomerModal" class="delete" data-toggle="modal">
-                          <i class="material-icons" data-toggle="tooltip"
-                             title="Delete">&#xE872;</i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>3</th>
-                      <td>Nguyễn Văn Hùng</td>
-                      <td>1995-12-21</td>
-                      <td>Nam</td>
-                      <td>123456789</td>
-                      <td>0918778123</td>
-                      <td>hungnguyen@gmail.com</td>
-                      <td>Đà Nẵng</td>
-                      <td>VIP</td>
-                      <td>
-                        <a routerLink="/customer/edit" class="edit"><i
-                          class="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit">&#xE254;</i></a>
-                      </td>
-                      <td>
-                        <a href="#deleteCustomerModal" class="delete" data-toggle="modal">
-                          <i class="material-icons" data-toggle="tooltip"
-                             title="Delete">&#xE872;</i></a>
-                      </td>
-                    </tr>
-
                     </tbody>
                   </table>
                 </div>

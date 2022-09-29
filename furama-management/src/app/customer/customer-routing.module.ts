@@ -4,13 +4,10 @@ import {ListComponent} from './list/list.component';
 import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
 
-
-
-
 const routes: Routes = [
   {
     path: 'customer/list',
-    component: ListComponent
+    component: ListComponent,
   },
   {
     path: 'customer/create',
@@ -18,8 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'customer/edit',
-    component: EditComponent
-  },
+    component: EditComponent,
+  }
 ];
 
 @NgModule({

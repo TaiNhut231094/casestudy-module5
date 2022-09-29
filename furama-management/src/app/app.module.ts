@@ -17,7 +17,7 @@ import {ContractModule} from './contract/contract.module';
     NavbarComponent,
     FooterComponent
   ],
-  imports: [
+    imports: [
     BrowserModule,
     AppRoutingModule,
     CustomerModule,
