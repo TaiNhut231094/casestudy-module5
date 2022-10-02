@@ -5,6 +5,7 @@ import {CustomerRoutingModule} from './customer-routing.module';
 import {ListComponent} from './list/list.component';
 import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -13,10 +14,12 @@ import {EditComponent} from './edit/edit.component';
     CreateComponent,
     EditComponent
   ],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        CustomerRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class CustomerModule {
 }

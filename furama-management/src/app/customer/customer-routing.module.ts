@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CreateComponent
   },
   {
-    path: 'customer/edit',
+    path: 'customer/edit/:id',
     component: EditComponent,
   }
 ];

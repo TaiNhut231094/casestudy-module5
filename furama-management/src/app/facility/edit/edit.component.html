@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div  class="blog">
+<div class="blog">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -20,73 +20,129 @@
         <div class="container mt-4">
           <div class="row w-50 mx-auto" style="background-color: white">
             <div class="col-lg-12">
-              <form action="/facility/edit" method="post">
-
-                <input type="hidden" class="form-control"/>
-
+              <form [formGroup]="facilityForm" (ngSubmit)="updateFacility(id)">
                 <div class="mb-2">
-                  <label class="form-label">Tên dịch vụ</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2">
-                  <label class="form-label">Diện tích sử dụng</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2">
-                  <label class="form-label">Chi phí thuê</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2">
-                  <label class="form-label">Số lượng người tối đa</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2">
-                  <label class="form-label">Kiểu dịch vụ</label>
-                  <select class="form-select"
-                          onchange="facilityTypeChanged(this.value)">
-                    <option value="1">Villa</option>
-                    <option value="2">House</option>
-                    <option value="3">Room</option>
+                  <label for="facilityType" class="form-label">Kiểu dịch vụ</label>
+                  <select id="facilityType" name="facilityType" formControlName="facilityType"
+                          [compareWith]="compareWithId" class="form-select"
+                          (change)="facilityTypeChanged($event.target.value)">
+                    <option selected value="" disabled>Chọn kiểu dịch vụ</option>
+                    <option *ngFor="let i of facilityTypes" [ngValue]="i">{{i.name}}</option>
                   </select>
                 </div>
 
-                <div class="mb-2" id="standardRoom">
-                  <label class="form-label">Tiêu chuẩn phòng</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2" id="descriptionOtherConvenience">
-                  <label class="form-label">Mô tả tiện nghi khác</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2" id="poolArea">
-                  <label class="form-label">Diện tích hồ bơi</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2" id="numberOfFloors">
-                  <label class="form-label">Số tầng</label>
-                  <input type="text" class="form-control"/>
-                </div>
-
-                <div class="mb-2" id="facilityFree">
-                  <label class="form-label">Dịch vụ miễn phí đi kèm</label>
-                  <input type="text" class="form-control"/>
+                <div class="mb-2">
+                  <label for="name" class="form-label">Tên dịch vụ</label>
+                  <input id="name" name="name" type="text" class="form-control"
+                         formControlName="name"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.name.hasError('required') && (facilityForm.controls.name.touched)">
+                    *Name is required!
+                  </div>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.name.hasError('pattern') && facilityForm.controls.name.touched">
+                    *Name invalidate!
+                  </div>
                 </div>
 
                 <div class="mb-2">
-                  <label class="form-label">Kiểu thuê</label>
-                  <select class="form-select">
-                    <option value="1">year</option>
-                    <option value="2">month</option>
-                    <option value="3">day</option>
-                    <option value="4">hour</option>
+                  <label for="area" class="form-label">Diện tích sử dụng</label>
+                  <input id="area" name="area" type="text" class="form-control"
+                         formControlName="area"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.area.hasError('required') && (facilityForm.controls.area.touched)">
+                    *Area is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="cost" class="form-label">Chi phí thuê</label>
+                  <input id="cost" name="cost" type="text" class="form-control"
+                         formControlName="cost"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.cost.hasError('required') && (facilityForm.controls.cost.touched)">
+                    *Cost is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="maxPeople" class="form-label">Số lượng người tối đa</label>
+                  <input id="maxPeople" name="maxPeople" type="text" class="form-control"
+                         formControlName="maxPeople"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.maxPeople.hasError('required') && (facilityForm.controls.maxPeople.touched)">
+                    *Max People is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="rentType" class="form-label">Kiểu thuê</label>
+                  <select id="rentType" name="rentType" formControlName="rentType" class="form-select"
+                          [compareWith]="compareWithId">
+                    <option selected value="" disabled>Chọn kiểu thuê</option>
+                    <option *ngFor="let i of rentTypes" [ngValue]="i">{{i.name}}</option>
                   </select>
+                </div>
+
+                <div class="mb-2" *ngIf="facilityId == '1: Object' || facilityId == '2: Object'">
+                  <label for="standardRoom" class="form-label">Tiêu chuẩn phòng</label>
+                  <input id="standardRoom" name="standardRoom" type="text" class="form-control"
+                         formControlName="standardRoom"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.standardRoom.hasError('required') && (facilityForm.controls.standardRoom.touched)">
+                    *Standard Room is required!
+                  </div>
+                </div>
+
+                <div class="mb-2" *ngIf="facilityId == '1: Object' || facilityId == '2: Object'">
+                  <label for="descriptionOtherConvenience" class="form-label">Mô tả tiện nghi khác</label>
+                  <textarea id="descriptionOtherConvenience" name="descriptionOtherConvenience" type="text"
+                            class="form-control"
+                            formControlName="descriptionOtherConvenience"></textarea>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.descriptionOtherConvenience.hasError('required') && (facilityForm.controls.descriptionOtherConvenience.touched)">
+                    *Description Other Convenience is required!
+                  </div>
+                </div>
+
+                <div class="mb-2" *ngIf="facilityId === '1: Object'">
+                  <label for="poolArea" class="form-label">Diện tích hồ bơi</label>
+                  <input id="poolArea" name="poolArea" type="text" class="form-control"
+                         formControlName="poolArea"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.poolArea.hasError('required') && (facilityForm.controls.poolArea.touched)">
+                    *Pool Area is required!
+                  </div>
+                </div>
+
+                <div class="mb-2" *ngIf="facilityId === '1: Object' || facilityId === '2: Object'">
+                  <label for="numberOfFloors" class="form-label">Số tầng</label>
+                  <input id="numberOfFloors" name="numberOfFloors" type="text" class="form-control"
+                         formControlName="numberOfFloors"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.numberOfFloors.hasError('required') && (facilityForm.controls.numberOfFloors.touched)">
+                    *Number Of Floors is required!
+                  </div>
+                </div>
+
+                <div class="mb-2" *ngIf="facilityId === '3: Object'">
+                  <label for="facilityFree" class="form-label">Dịch vụ miễn phí đi kèm</label>
+                  <input id="facilityFree" name="facilityFree" type="text" class="form-control"
+                         formControlName="facilityFree"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.facilityFree.hasError('required') && (facilityForm.controls.facilityFree.touched)">
+                    *Facility Free is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="image" class="form-label">Đường dẫn ảnh</label>
+                  <input id="image" name="image" type="text" class="form-control"
+                         formControlName="image"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="facilityForm.controls.image.hasError('required') && (facilityForm.controls.image.touched)">
+                    *Facility Free is required!
+                  </div>
                 </div>
 
                 <div style="text-align: center">

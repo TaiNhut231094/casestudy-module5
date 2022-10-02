@@ -36,14 +36,12 @@
                           <i class="material-icons">&#xE147;</i> <span>Add New Customer</span></a>
                       </div>
                       <div class="col-xs-5">
-                        <form class="d-flex" role="search" action="">
-                          <input class="form-control me-2" type="search" placeholder="search"
-                                 aria-label="Search" name="nameSearch">
-                          <button class="btn btn-success" type="submit" name="action"
-                                  value="search">
-                            search
-                          </button>
-                        </form>
+                        <input class="form-control me-2" type="search" placeholder="search"
+                               aria-label="Search" name="nameSearch" [(ngModel)]="nameSearch">
+                        <button class="btn btn-success" type="submit" name="action" value="search"
+                                (click)="getValueSearch()">
+                          search
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -67,22 +65,22 @@
                     <tr *ngFor="let item of customers">
                       <th>{{item.id}}</th>
                       <td>{{item.name}}</td>
-                      <td>{{item.dateOfBirthday}}</td>
-                      <td>{{item.gender == false ? 'Nam' : 'Nữ'}}</td>
+                      <td>{{item.dateOfBirth}}</td>
+                      <td>{{item.gender}}</td>
                       <td>{{item.idCard}}</td>
                       <td>{{item.phoneNumber}}</td>
                       <td>{{item.email}}</td>
                       <td>{{item.address}}</td>
                       <td>{{item.customerType.name}}</td>
                       <td>
-                        <a routerLink="/customer/edit" class="edit"><i
+                        <a [routerLink]="['/customer/edit', item.id]" class="edit"><i
                           class="material-icons"
                           data-toggle="tooltip"
                           title="Edit">&#xE254;</i></a>
                       </td>
                       <td>
                         <a href="#deleteCustomerModal" class="delete" data-toggle="modal">
-                          <i class="material-icons" data-toggle="tooltip"
+                          <i class="material-icons" data-toggle="tooltip" (click)="openDelete(item)"
                              title="Delete">&#xE872;</i></a>
                       </td>
                     </tr>
@@ -102,23 +100,19 @@
 <div id="deleteCustomerModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="post">
-        <div class="modal-header">
-          <h4 class="modal-title">Delete Customer</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <span>Bạn có chắc chắn muốn xóa khách hàng:  </span>
-          <span id="nameDelete"></span>
-          <input type="text" hidden name="idDelete" id="idDelete">
-          <input type="text" hidden name="action" value="delete">
-          <p class="text-warning"><small>Hành động này không thể hoàn tác.</small></p>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-danger" value="Delete">
-        </div>
-      </form>
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Customer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span>Bạn có chắc chắn muốn xóa khách hàng:  </span>
+        <span id="nameDelete">{{nameDelete}}</span>
+        <p class="text-warning"><small>Hành động này không thể hoàn tác.</small></p>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+        <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Delete" (click)="deleteCustomer()">
+      </div>
     </div>
   </div>
 </div>
