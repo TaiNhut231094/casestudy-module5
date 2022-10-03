@@ -1,1 +1,93 @@
-<p>create works!</p>
+
+<div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Add new customers</h2>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="container mt-4">
+          <div class="row w-50 mx-auto" style="background-color: white">
+            <div class="col-lg-12">
+              <form [formGroup]="contractForm" (ngSubmit)="submit()">
+                <div class="mb-2">
+                  <label for="startDate" class="form-label">Start date</label>
+                  <input id="startDate" name="startDate" type="date" class="form-control"
+                         formControlName="startDate"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.startDate.hasError('required') && (contractForm.controls.startDate.touched)">
+                    *Start Date is required!
+                  </div>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.startDate.hasError('dateStartError') && (contractForm.controls.startDate.touched)">
+                    *Input date must be less than or equal to current date!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="endDate" class="form-label">End date</label>
+                  <input id="endDate" name="endDate" type="date" class="form-control"
+                         formControlName="endDate"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.endDate.hasError('required') && (contractForm.controls.endDate.touched)">
+                    *End Date Of Birth is required!
+                  </div>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.endDate.hasError('dateStopError') && contractForm.controls.endDate.touched">
+                    *Input date must be less than or equal to current date!
+                  </div>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.endDate.hasError('dateContractError') && contractForm.controls.endDate.touched">
+                    *The end date must be greater than the start date!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="deposit" class="form-label">Tiền đặt cọc</label>
+                  <input id="deposit" name="deposit" type="text" class="form-control"
+                         formControlName="deposit"/>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.deposit.hasError('required') && (contractForm.controls.deposit.touched)">
+                    *Deposit is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="customer" class="form-label">Khách hàng</label>
+                  <select id="customer" name="customer" class="form-select" formControlName="customer">
+                    <option selected value="" disabled>---Chọn khách hàng---</option>
+                    <option *ngFor="let i of customers" [ngValue]="i">{{i.name}}</option>
+                  </select>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.customer.hasError('required') && (contractForm.controls.customer.touched)">
+                    *Customer is required!
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label for="facility" class="form-label">Dịch vụ</label>
+                  <select id="facility" name="facility" class="form-select" formControlName="facility">
+                    <option selected value="" disabled>---Chọn dịch vụ---</option>
+                    <option *ngFor="let i of facilities" [ngValue]="i">{{i.name}}</option>
+                  </select>
+                  <div class="mb-4 text-danger"
+                       *ngIf="contractForm.controls.facility.hasError('required') && (contractForm.controls.facility.touched)">
+                    *Facility is required!
+                  </div>
+                </div>
+
+                <br>
+                <div style="text-align: center">
+                  <a routerLink="/contract/list"><input class="btn btn-success mx-2" type="button" value="Back"></a>
+                  <button type="submit" class="btn btn-success" [disabled]="!contractForm.valid">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

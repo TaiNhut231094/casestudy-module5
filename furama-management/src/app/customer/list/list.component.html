@@ -28,42 +28,47 @@
                 <div class="table-wrapper">
                   <div class="table-title">
                     <div class="row">
-                      <div class="col-xs-3">
+                      <div class="col-lg-3">
                         <h2>Manage <b>Customer</b></h2>
                       </div>
-                      <div class="col-xs-4">
+                      <div class="col-lg-3">
                         <a routerLink="/customer/create" class="btn btn-success">
                           <i class="material-icons">&#xE147;</i> <span>Add New Customer</span></a>
                       </div>
-                      <div class="col-xs-5">
-                        <input class="form-control me-2" type="search" placeholder="search"
-                               aria-label="Search" name="nameSearch" [(ngModel)]="nameSearch">
-                        <button class="btn btn-success" type="submit" name="action" value="search"
-                                (click)="getValueSearch()">
-                          search
-                        </button>
+                      <div class="col-lg-3">
+                        <div class="mySearch">
+                          <input placeholder="search by email" aria-label="Search" name="nameSearch" [(ngModel)]="emailSearch">
+                        </div>
+                      </div>
+                      <div class="col-lg-3" >
+                        <div class="mySearch">
+                        <input placeholder="search by name" aria-label="Search" name="nameSearch" [(ngModel)]="nameSearch">
+                          <button type="submit" (click)="getValueSearch()">
+                            search
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <table class="table table-striped table-hover" border="1">
                     <thead>
                     <tr>
-                      <th>STT</th>
+                      <th>#</th>
                       <th>Name</th>
-                      <th>Ngày sinh</th>
-                      <th>Giới tính</th>
-                      <th>Số CMND</th>
-                      <th>Số điện thoại</th>
+                      <th>Date Of Birth</th>
+                      <th>Gender</th>
+                      <th>ID Card</th>
+                      <th>Phone Number</th>
                       <th>Email</th>
-                      <th>Địa chỉ</th>
-                      <th>Kiểu khách</th>
+                      <th>Address</th>
+                      <th>Customer Type</th>
                       <th>Sửa</th>
                       <th>Xóa</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let item of customers">
-                      <th>{{item.id}}</th>
+                    <tr *ngFor="let item of customers, index as i">
+                      <th>{{i + 1}}</th>
                       <td>{{item.name}}</td>
                       <td>{{item.dateOfBirth}}</td>
                       <td>{{item.gender}}</td>

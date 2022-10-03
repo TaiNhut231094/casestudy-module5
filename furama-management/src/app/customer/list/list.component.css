@@ -64,78 +64,21 @@ table.table td a.delete {
   color: #F44336;
 }
 
-/*!*table.table .avatar {*!*/
-/*!*  border-radius: 50%;*!*/
-/*!*  vertical-align: middle;*!*/
-/*!*  margin-right: 10px;*!*/
-/*!*}*!*/
+.mySearch input {
+  padding: 5px 10px;
+  width: 80%;
+  border: none;
+  outline: none;
+  color: black;
+}
 
-/*!*.pagination li a {*!*/
-/*!*  border: none;*!*/
-/*!*  font-size: 13px;*!*/
-/*!*  min-width: 30px;*!*/
-/*!*  min-height: 30px;*!*/
-/*!*  color: #999;*!*/
-/*!*  margin: 0 2px;*!*/
-/*!*  line-height: 30px;*!*/
-/*!*  border-radius: 2px !important;*!*/
-/*!*  text-align: center;*!*/
-/*!*  padding: 0 6px;*!*/
-/*!*}*!*/
+.mySearch button {
+  padding: 5px 10px;
+  background: #28a745;
+}
 
-/*!*.pagination li a:hover {*!*/
-/*!*  color: #666;*!*/
-/*!*}*!*/
+.mySearch button:hover{
+  background: #1e7e34;
+}
 
-/*!*.pagination li.active a, .pagination li.active a.page-link {*!*/
-/*!*  background: #03A9F4;*!*/
-/*!*}*!*/
 
-/*!*.pagination li.active a:hover {*!*/
-/*!*  background: #0397d6;*!*/
-/*!*}*!*/
-
-/*!*.pagination li.disabled i {*!*/
-/*!*  color: #ccc;*!*/
-/*!*}*!*/
-
-/*!*.pagination li i {*!*/
-/*!*  font-size: 16px;*!*/
-/*!*  padding-top: 6px*!*/
-/*!*}*!*/
-
-/*!*.custom-checkbox label:before {*!*/
-/*!*  width: 18px;*!*/
-/*!*  height: 18px;*!*/
-/*!*}*!*/
-
-/*!* Modal styles *!*/
-/*.modal .modal-dialog {*/
-/*  max-width: 400px;*/
-/*}*/
-
-/*.modal .modal-header, .modal .modal-body, .modal .modal-footer {*/
-/*  padding: 20px 30px;*/
-/*}*/
-
-/*.modal .modal-content {*/
-/*  border-radius: 3px;*/
-/*}*/
-
-/*.modal .modal-footer {*/
-/*  background: #ecf0f1;*/
-/*  border-radius: 0 0 3px 3px;*/
-/*}*/
-
-/*.modal .modal-title {*/
-/*  display: inline-block;*/
-/*}*/
-
-/*.modal .btn {*/
-/*  border-radius: 2px;*/
-/*  min-width: 100px;*/
-/*}*/
-
-/*.modal form label {*/
-/*  font-weight: normal;*/
-/*}*/

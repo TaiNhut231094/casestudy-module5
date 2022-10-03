@@ -32,56 +32,38 @@
                         <h2>Manage <b>Contract</b></h2>
                       </div>
                       <div class="col-xs-4">
-                        <a href="" class="btn btn-success" data-toggle="modal">
+                        <a routerLink="/contract/create" class="btn btn-success" data-toggle="modal">
                           <i class="material-icons">&#xE147;</i> <span>Add New Contract</span></a>
                       </div>
                       <div class="col-xs-5">
-                        <form class="d-flex" role="search" action="/contract">
-                          <input class="form-control me-2" type="search" placeholder="search"
-                                 aria-label="Search" name="nameSearch">
-                          <button class="btn btn-success" type="submit" name="action"
-                                  value="search">
+                        <div id="search">
+                          <input placeholder="search" aria-label="Search" name="nameSearch" [(ngModel)]="nameSearch">
+                          <button type="submit" (click)="getValueSearch()">
                             search
                           </button>
-                        </form>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <table id="tableFacility" class="table table-striped table-hover" border="1">
                     <thead>
                     <tr>
-                      <th>STT</th>
-                      <th>Dịch Vụ</th>
+                      <th>#</th>
                       <th>Khách hàng</th>
+                      <th>Dịch Vụ</th>
+                      <th>Tiền đặt cọc</th>
                       <th>Ngày bắt đầu</th>
                       <th>Ngày kết thúc</th>
-                      <th>Tiền đặt cọc</th>
                     </tr>
                     </thead>
-                    <tbody id="bodyContract">
-                    <tr>
-                      <th>1</th>
-                      <td>Beach Front</td>
-                      <td>Nguyễn Thị Hào</td>
-                      <td>2020-12-08</td>
-                      <td>2020-12-08</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <th>1</th>
-                      <td>Beach Front</td>
-                      <td>Nguyễn Thị Hào</td>
-                      <td>2020-12-08</td>
-                      <td>2020-12-08</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <th>1</th>
-                      <td>Beach Front</td>
-                      <td>Nguyễn Thị Hào</td>
-                      <td>2020-12-08</td>
-                      <td>2020-12-08</td>
-                      <td>0</td>
+                    <tbody>
+                    <tr *ngFor="let item of contracts, index as i">
+                      <th>{{i + 1}}</th>
+                      <td>{{item.customer.name}}</td>
+                      <td>{{item.facility.name}}</td>
+                      <td>{{item.deposit}}</td>
+                      <td>{{item.startDate}}</td>
+                      <td>{{item.endDate}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -135,46 +117,39 @@
 <!--    </div>-->
 <!--</div>-->
 
-<div id="addContractDetailModal" class="modal fade" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="contractDetailForm">
-        <div class="modal-header">
-          <h4 class="modal-title">Tạo hợp đồng chi tiết</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="inputContractId">Mã hợp đồng</label>
-            <input readonly id="inputContractId" type="text" class="form-control"/>
-          </div>
+<!--<div id="addContractDetailModal" class="modal fade" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <form id="contractDetailForm">-->
+<!--        <div class="modal-header">-->
+<!--          <h4 class="modal-title">Tạo hợp đồng chi tiết</h4>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <div class="form-group">-->
+<!--            <label for="inputContractId">Mã hợp đồng</label>-->
+<!--            <input readonly id="inputContractId" type="text" class="form-control"/>-->
+<!--          </div>-->
 
-          <div class="form-group">
-            <label class="form-label" for="selectFacility">Tên dịch vụ đi kèm</label>
-            <select id="selectFacility" class="form-select">
-              <option value="">Chọn dịch vụ đi kèm</option>
-              <option></option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="inputQuantity">Số lượng</label>
-            <input type="text" id="inputQuantity" class="form-control"/>-->
-          </div>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="HỦy bỏ">
-          <input type="submit" class="btn btn-success" value="Tạo hợp đồng chi tiết">
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-<script>
-  function infoCreateContractDetail(id) {
-    document.getElementById("inputContractId").value = id;
-  }
-</script>
+<!--          <div class="form-group">-->
+<!--            <label class="form-label" for="selectFacility">Tên dịch vụ đi kèm</label>-->
+<!--            <select id="selectFacility" class="form-select">-->
+<!--              <option value="">Chọn dịch vụ đi kèm</option>-->
+<!--              <option></option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label class="form-label" for="inputQuantity">Số lượng</label>-->
+<!--            <input type="text" id="inputQuantity" class="form-control"/>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <input type="button" class="btn btn-default" data-dismiss="modal" value="HỦy bỏ">-->
+<!--          <input type="submit" class="btn btn-success" value="Tạo hợp đồng chi tiết">-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 </body>
 </html>

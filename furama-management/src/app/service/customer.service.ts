@@ -15,9 +15,13 @@ export class CustomerService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(nameSearch: string): Observable<Customer[]> {
-    return this.http.get<Customer[]>(API_URL + '/customers?name_like=' + nameSearch);
+  getAll(nameSearch: string, emailSearch: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(API_URL + '/customers?name_like=' + nameSearch + '&email_like=' + emailSearch);
   }
+
+  // getAllCustomer(nameSearch: string): Observable<Customer[]> {
+  //   return this.http.get<Customer[]>(API_URL + '/customerRest/list?name=' + nameSearch);
+  // }
 
   getAllCustomerType(): Observable<CustomerType[]> {
     return this.http.get<CustomerType[]>(API_URL + '/customerTypes');

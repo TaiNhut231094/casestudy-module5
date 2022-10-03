@@ -17,7 +17,11 @@ export class CreateComponent implements OnInit {
   constructor(private customerService: CustomerService,
               private toastrService: ToastrService) {
     this.customerForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern
+      ('^([A-VXYỲỌÁẦẢẤỜỄÀẠẰỆẾÝỘẬỐŨỨĨÕÚỮỊỖÌỀỂẨỚẶÒÙỒỢÃỤỦÍỸẮẪỰỈỎỪỶỞÓÉỬỴẲẸÈẼỔẴẺỠƠÔƯĂÊÂĐ]{1})' +
+        '([a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]+)((\\s{1}' +
+        '([A-VXYỲỌÁẦẢẤỜỄÀẠẰỆẾÝỘẬỐŨỨĨÕÚỮỊỖÌỀỂẨỚẶÒÙỒỢÃỤỦÍỸẮẪỰỈỎỪỶỞÓÉỬỴẲẸÈẼỔẴẺỠƠÔƯĂÊÂĐ]{1})' +
+        '[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]+))+$')]),
       dateOfBirth: new FormControl('', [Validators.required, validatorAge]),
       gender: new FormControl('', [Validators.required]),
       idCard: new FormControl('', [Validators.required, Validators.pattern('\\d{9}|\\d{11}')]),
@@ -34,10 +38,12 @@ export class CreateComponent implements OnInit {
 
   submit() {
     const customer = this.customerForm.value;
-    this.customerService.saveCustomer(customer).subscribe(() => {
-      this.customerForm.reset();
-      this.toastrService.success('Thêm mới thành công', 'Thông báo');
-    });
+    if (this.customerForm.valid) {
+      this.customerService.saveCustomer(customer).subscribe(() => {
+        this.customerForm.reset();
+        this.toastrService.success('Thêm mới thành công', 'Thông báo');
+      });
+    }
   }
 
   getAllCustomerType() {

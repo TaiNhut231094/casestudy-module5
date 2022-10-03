@@ -69,6 +69,20 @@
         "id": 3,
         "name": "Gold"
       }
+    },
+    {
+      "name": "Nguyễn Văn An",
+      "dateOfBirth": "1990-10-07",
+      "gender": "Nam",
+      "idCard": "57887578446",
+      "phoneNumber": "0901234121",
+      "email": "annguyen@gmail.com",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "address": "ĐN",
+      "id": 6
     }
   ],
   "customerTypes": [
@@ -251,6 +265,131 @@
     {
       "id": 3,
       "name": "Room"
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "deposit": 0,
+      "startDate": "2020-12-08",
+      "endDate": "2020-12-08",
+      "customer": {
+        "id": 1,
+        "name": "Nguyễn Thị Hào",
+        "dateOfBirth": "1970-11-07",
+        "gender": "Nữ",
+        "idCard": "643431213",
+        "phoneNumber": "0945423362",
+        "email": "thihao07@gmail.com",
+        "customerType": {
+          "id": 5,
+          "name": "Member"
+        },
+        "address": "23 Nguyễn Hoàng, Đà Nẵng"
+      },
+      "facility": {
+        "id": 3,
+        "name": "Room Twin 01",
+        "area": 5000,
+        "cost": 1000000,
+        "maxPeople": 2,
+        "standardRoom": "normal",
+        "descriptionOtherConvenience": "Có tivi",
+        "poolArea": null,
+        "numberOfFloors": null,
+        "facilityFree": "Ăn sáng",
+        "rentType": {
+          "id": 3,
+          "name": "month"
+        },
+        "facilityType": {
+          "id": 3,
+          "name": "Room"
+        },
+        "image": "assets/images/Vietnam_Danang_Furama_Garden-Deluxe-twin-bed-F-370x239.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "deposit": 200000,
+      "startDate": "2020-07-21",
+      "endDate": "2020-07-14",
+      "customer": {
+        "id": 3,
+        "name": "Trương Đình Nghệ",
+        "dateOfBirth": "1990-02-27",
+        "gender": "Nam",
+        "idCard": "488645199",
+        "phoneNumber": "0373213122",
+        "email": "nghenhan2702@gmail.com",
+        "customerType": {
+          "id": 1,
+          "name": "Diamond"
+        },
+        "address": "K323/12 Ông Ích Khiêm, Vinh"
+      },
+      "facility": {
+        "id": 1,
+        "name": "Beach Front",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "vip",
+        "descriptionOtherConvenience": "Có hồ bơi",
+        "poolArea": 500,
+        "numberOfFloors": 4,
+        "facilityFree": null,
+        "rentType": {
+          "id": 4,
+          "name": "year"
+        },
+        "facilityType": {
+          "id": 1,
+          "name": "Villa"
+        },
+        "image": "assets/images/three-bedroom-pool-villa-2-cr-800x450.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "deposit": 50000,
+      "startDate": "2021-03-17",
+      "endDate": "2021-03-15",
+      "customer": {
+        "id": 4,
+        "name": "Dương Văn Quan",
+        "dateOfBirth": "1981-07-08",
+        "gender": "Nam",
+        "idCard": "543432111",
+        "phoneNumber": "0490039241",
+        "email": "duongquan@gmail.com",
+        "customerType": {
+          "id": 1,
+          "name": "Diamond"
+        },
+        "address": "K453/12 Lê Lợi, Đà Nẵng"
+      },
+      "facility": {
+        "id": 2,
+        "name": "House Princess 01",
+        "area": 14000,
+        "cost": 5000000,
+        "maxPeople": 7,
+        "standardRoom": "vip",
+        "descriptionOtherConvenience": "Có thêm bếp nướng",
+        "poolArea": null,
+        "numberOfFloors": 3,
+        "facilityFree": null,
+        "rentType": {
+          "id": 2,
+          "name": "day"
+        },
+        "facilityType": {
+          "id": 2,
+          "name": "House"
+        },
+        "image": "assets/images/phong-ngu-biet-thu-4-pn-furama-da-nang.jpg"
+      }
     }
   ]
 }

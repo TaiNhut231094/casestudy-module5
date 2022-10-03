@@ -63,3 +63,22 @@ table.table td a.edit {
 table.table td a.delete {
   color: #F44336;
 }
+
+#search input {
+  padding: 5px 10px;
+  border-radius:10px 0 0  10px;
+  width: 80%;
+  border: none;
+  outline: none;
+  color: black;
+}
+
+#search button {
+  padding: 5px 10px;
+  background: #28a745;
+  border-radius: 0 10px 10px 0;
+}
+
+#search button:hover{
+  background: #1e7e34;
+}

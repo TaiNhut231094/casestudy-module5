@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../model/customer';
 import {CustomerService} from '../../service/customer.service';
 import {ToastrService} from 'ngx-toastr';
+import {ContractService} from '../../service/contract.service';
 
 @Component({
   selector: 'app-list',
@@ -13,8 +14,10 @@ export class ListComponent implements OnInit {
   idDelete: number;
   nameDelete: string;
   nameSearch = '';
+  emailSearch = '';
 
-  constructor(private customerService: CustomerService, private toastrService: ToastrService) {
+  constructor(private customerService: CustomerService,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -22,7 +25,8 @@ export class ListComponent implements OnInit {
   }
 
   getAll() {
-    this.customerService.getAll(this.nameSearch).subscribe(customers => {
+    console.log(this.customers);
+    this.customerService.getAll(this.nameSearch, this.emailSearch).subscribe(customers => {
       this.customers = customers;
     });
   }
@@ -40,7 +44,7 @@ export class ListComponent implements OnInit {
   }
 
   getValueSearch() {
-    this.customerService.getAll(this.nameSearch).subscribe(customers => {
+    this.customerService.getAll(this.nameSearch, this.emailSearch).subscribe(customers => {
       this.customers = customers;
     });
   }

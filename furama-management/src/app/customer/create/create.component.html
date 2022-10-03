@@ -13,7 +13,7 @@
             <div class="col-lg-12">
               <form [formGroup]="customerForm" (ngSubmit)="submit()">
                 <div class="mb-2">
-                  <label for="name" class="form-label">Tên khách hàng</label>
+                  <label for="name" class="form-label">Name Customer</label>
                   <input id="name" name="name" type="text" class="form-control"
                          formControlName="name"/>
                   <div class="mb-4 text-danger"
@@ -22,12 +22,12 @@
                   </div>
                   <div class="mb-4 text-danger"
                        *ngIf="customerForm.controls.name.hasError('pattern') && customerForm.controls.name.touched">
-                    *Name invalidate!
+                    *The first letter of the name must be capitalized!
                   </div>
                 </div>
 
                 <div class="mb-2">
-                  <label for="dateOfBirth" class="form-label">Ngày sinh</label>
+                  <label for="dateOfBirth" class="form-label">Date Of Birth</label>
                   <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control"
                          formControlName="dateOfBirth"/>
                   <div class="mb-4 text-danger"
@@ -36,18 +36,18 @@
                   </div>
                   <div class="mb-4 text-danger"
                        *ngIf="customerForm.controls.dateOfBirth.hasError('dateOfBirth') && customerForm.controls.dateOfBirth.touched">
-                    *Bạn chưa đủ 18 tuổi hoặc bạn đã nhập ngày sinh không đúng!
+                    *You are under 18 years old or you entered the wrong date of birth!
                   </div>
                 </div>
 
                 <div class="mb-2">
-                  <label  class="form-label">Giới tính: </label>
-                  <input  name="gender" class="form-check-input" type="radio" value="Nam" formControlName="gender"/> Nam
-                  <input  name="gender" class="form-check-input" type="radio" value="Nữ" formControlName="gender"/> Nữ
+                  <label  class="form-label">Gender: </label>
+                  <input name="gender" class="form-check-input" type="radio" value="Nam" formControlName="gender"/> Nam
+                  <input name="gender" class="form-check-input" type="radio" value="Nữ" formControlName="gender"/> Nữ
                 </div>
 
                 <div class="mb-2">
-                  <label for="idCard" class="form-label">Số CMND</label>
+                  <label for="idCard" class="form-label">ID Card</label>
                   <input id="idCard" name="idCard" type="text" class="form-control"
                          formControlName="idCard"/>
                   <div class="mb-4 text-danger"
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="mb-2">
-                  <label for="phoneNumber" class="form-label">Số điện thoại</label>
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
                   <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
                          formControlName="phoneNumber"/>
                   <div class="mb-4 text-danger"
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="mb-2">
-                  <label for="address" class="form-label">Địa chỉ</label>
+                  <label for="address" class="form-label">Address</label>
                   <textarea id="address" name="address" type="text" class="form-control"
                             formControlName="address"></textarea>
                   <div class="mb-4 text-danger"
@@ -99,9 +99,9 @@
                 </div>
 
                 <div class="mb-2">
-                  <label for="customerType" class="form-label">Kiểu khách hàng</label>
+                  <label for="customerType" class="form-label">Customer Type</label>
                   <select id="customerType" name="customerType" class="form-select" formControlName="customerType">
-                    <option selected value="" disabled>---Chọn kiểu khách hàng---</option>
+                    <option selected value="" disabled>---Choose customer type---</option>
                     <option *ngFor="let i of customerTypes" [ngValue]="i">{{i.name}}</option>
                   </select>
                   <div class="mb-4 text-danger"

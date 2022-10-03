@@ -1,11 +1,11 @@
-import {CustomerType} from './customer-type';
 import {Facility} from './facility';
+import {Customer} from './customer';
 
 export interface Contract {
   id: number;
   deposit: number;
-  start: string;
+  startDate: string;
   endDate: string;
-  customerType: CustomerType;
+  customer: Customer;
   facility: Facility;
 }

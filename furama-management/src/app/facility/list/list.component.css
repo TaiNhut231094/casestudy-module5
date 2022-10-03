@@ -1,0 +1,18 @@
+.mySearch input {
+  padding: 5px 10px;
+  border-radius:5px 0 0  5px;
+  width: 80%;
+  border: none;
+  outline: none;
+  color: black;
+}
+
+.mySearch button {
+  padding: 5px 10px;
+  background: #28a745;
+  border-radius: 0 5px 5px 0;
+}
+
+.mySearch button:hover{
+  background: #1e7e34;
+}

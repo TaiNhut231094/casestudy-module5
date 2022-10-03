@@ -17,7 +17,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private facilityService: FacilityService) {
     this.facilityForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern('^([A-Z0-9])[a-z0-9]+((\\\\s[A-Z0-9])[a-z0-9]+)+$')]),
       area: new FormControl('', [Validators.required]),
       cost: new FormControl('', [Validators.required]),
       maxPeople: new FormControl('', [Validators.required]),
